@@ -21,7 +21,7 @@ syntax on		" syntax highlight
 set hlsearch		" search highlight
 
 if has("gui_running")	" GUI color and font setting
-	set guifont=osaka-mono:h20
+        set guifont=osaka-mono:h20
 	set background=dark
 	set t_Co=256	" 256 colo mode 
 	set cursorline	" highlight current line
@@ -30,6 +30,7 @@ else
 	" terminal color settings
 	colors vgod
 endif
+
 
 set clipboard=unnamed	" yank to the systme register (*) by default
 set showmatch		" Cursor shows matching ) and }
@@ -95,21 +96,42 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm'\"")|e
 " USEFUL SHORTCUTS
 "---------------------------------------------------------------------------
 
-"Plugin Shortcuts
-"NERDTree 
-nnoremap <silent> <F5> :NERDTree<CR>
+"todo
 
 "---------------------------------------------------------------------------
 " PROGRAMMING SHORTCUTS
 "--------------------------------------------------------------------------- 
 
-"todo
+" Ctrl-[ jump out of the tag stack (undo Ctrl-])
+map <C-[> <ESC>:po<CR>
+
+" Enable omni completion. (Ctrl-X Ctrl-O)
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType java set omnifunc=javacomplete#Complete
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+" use syntax complete if nothing else available
+if has("autocmd") && exists("+omnifunc")
+  autocmd Filetype *
+              \	if &omnifunc == "" |
+              \		setlocal omnifunc=syntaxcomplete#Complete |
+              \	endif
+endif
+
+" make CSS omnicompletion work for SASS and SCSS
+autocmd BufNewFile,BufRead *.scss             set ft=scss.css
+autocmd BufNewFile,BufRead *.sass             set ft=sass.css
 
 "---------------------------------------------------------------------------
 " ENCODING SETTINGS
 "--------------------------------------------------------------------------- 
 
-set encoding=utf-8
+set encoding=utf8
 set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,big5,gb2312,latin1
@@ -135,4 +157,6 @@ endfun
 " PLUGIN SETTINGS
 "--------------------------------------------------------------------------- 
 
-"todo
+"NERDTree 
+nnoremap <silent> <F5> :NERDTree<CR>
+
