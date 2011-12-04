@@ -95,7 +95,9 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm'\"")|e
 " USEFUL SHORTCUTS
 "---------------------------------------------------------------------------
 
-"todo
+"Plugin Shortcuts
+"NERDTree 
+nnoremap <silent> <F5> :NERDTree<CR>
 
 "---------------------------------------------------------------------------
 " PROGRAMMING SHORTCUTS
