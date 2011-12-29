@@ -85,7 +85,7 @@ function! HasPaste()
 endfunction
 
 " C/C++ specific settings
-"autocmd FileType c,cpp,cc set cindent comments=sr:/*,mb:*,el:*/,://cino=>s,e0,n0,f0,{0,}0,^-1s,:0,=s,g0,h1s,p2,t0,+2,(2,)20,*30
+autocmd FileType c,cpp,cc set cindent comments=sr:/*,mb:*,el:*/,://cino=>s,e0,n0,f0,{0,}0,^-1s,:0,=s,g0,h1s,p2,t0,+2,(2,)20,*30
 
 "Restore cursor to file position in previous editing session
 set viminfo='10,\"100,:20,%,n~/.viminfo
@@ -96,7 +96,24 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm'\"")|e
 " USEFUL SHORTCUTS
 "---------------------------------------------------------------------------
 
-"todo
+" set leader to ,
+let mapleader=","
+let g:mapleader=","
+
+" ,/ turn off search highlighting
+nmap <leader>/ :nohl<CR>
+
+" move around tabs. conflict with the original screen top/bottom
+" comment them out if you want the original H/L
+" go to prev tab
+map <S-H> gT
+" go to next tab
+map <S-L> gt
+
+" new tab
+map <C-t><C-t> :tabnew<CR>
+" close tab
+map <C-t><C-w> :tabclose<CR> 
 
 "---------------------------------------------------------------------------
 " PROGRAMMING SHORTCUTS
@@ -156,6 +173,9 @@ endfun
 "---------------------------------------------------------------------------
 " PLUGIN SETTINGS
 "--------------------------------------------------------------------------- 
+
+" --- SuperTab
+let g:SuperTabDefaultCompletionType = "context"
 
 "NERDTree 
 nnoremap <silent> <F5> :NERDTree<CR>
