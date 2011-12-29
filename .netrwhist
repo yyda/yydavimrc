@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Users/yuta/Project/blog/config'
-let g:netrw_dirhist_2='/Users/yuta/Project/compass-project/compass-sinatra/config'
-let g:netrw_dirhist_3='/private/etc/apache2/users'
-let g:netrw_dirhist_4='/Users/yuta/Sites/myday/Twig'
-let g:netrw_dirhist_5='/Users/yuta/Sites/myday'
